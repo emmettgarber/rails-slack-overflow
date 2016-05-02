@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    p "wtf -->%%%%% #{@question.answers.length}"
   end
 
   def new
