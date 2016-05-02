@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # post '/questions'    =>  'questions#create'
   get '/sessions/login' => 'sessions#new'
   post '/sessions/login' => 'sessions#create'
+  get '/sessions/logout' => 'sessions#delete'
+  resources :users
     resources :questions do
       resources :answers
     end
