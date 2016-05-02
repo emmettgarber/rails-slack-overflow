@@ -1,6 +1,9 @@
 <h1><%= @question.title %></h1>
 <%= @question.body %>
-
+<% if @question.author_id == session[:user_id]%>
+  <%= link_to("Edit", edit_question_path) %>
+  <%= link_to("Delete", @question , method: :delete, data: {confirm: "Do you really want to do this? do you?"}) %>
+<%end%>
 <h2>Add a Answer:</h2>
 <%= render 'answers/form' %>
 
