@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
+    p "wtf -->%%%%% #{@question.answers.length}"
   end
 
   def new
@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
     @question = Question.new(params.require(:question).permit(:title, :body))
     @question.author = @user
     if @question.save

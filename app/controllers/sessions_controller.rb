@@ -7,7 +7,9 @@ class SessionsController < ActionController::Base
     # @user = User.find_by(username: params[:username])
     if User.authenticate(params[:username],params[:password])
       @user = User.find_by(username: params[:username])
-      session[:id] = @user.id
+      p @user
+      session[:user_id] = @user.id
+      p session[:user_id]
       redirect_to root_path
     else
       render 'new'
