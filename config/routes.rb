@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  root "questions#index"
+  # get '/questions/new' => 'questions#new'
+  # get '/questions/:id' => 'questions#show'
+  # post '/questions'    =>  'questions#create'
+  get '/sessions/login' => 'sessions#new'
+  post '/sessions/login' => 'sessions#create'
+    resources :questions do
+      resources :answers
+    end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

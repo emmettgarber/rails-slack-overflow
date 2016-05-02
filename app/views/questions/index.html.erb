@@ -1,0 +1,6 @@
+<h2>This is a question</h2>
+<% @questions.each do |question| %>
+<%= question.title %>
+<%= question.author.username %>
+Submitted <%= time_ago_in_words(question.created_at) %> ago.
+<% end %>
