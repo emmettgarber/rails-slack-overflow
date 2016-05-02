@@ -8,12 +8,12 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @question = Question.new
   end
 
   def create
-    @question = Question.new(post_params)
-    if @questions.save
+    @question = Question.new(title: params[:title], body: params[:body], author: User.find(1))
+    if @question.save
       redirect_to @question
     else
       render 'new'
