@@ -1,0 +1,10 @@
+class CreateUpvotes < ActiveRecord::Migration
+  def change
+    create_table :votes do |t|
+      t.refrences :user
+      t.refrences :votable, polymorphic: true
+      t.integer :value
+      t.timestamps(null: false)
+    end
+  end
+end
