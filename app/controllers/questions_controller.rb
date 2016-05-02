@@ -21,5 +21,21 @@ class QuestionsController < ApplicationController
       render 'new'
     end
   end
+  def edit
+    @question = Question.find(params[:id])
+  end
 
+  def update
+    @question = Question.find(params[:id])
+    if @question.update(params[:question].permit(:title, :body))
+      redirect_to @question
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Question.find(params[:id]).destroy
+    redirect_to root_path
+  end
 end
