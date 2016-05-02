@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  root "questions#index"
+  get '/questions/:id' => 'questions#show'
+  get '/questions/new' => 'questions#new'
+  post '/questions'    =>  'questions#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
