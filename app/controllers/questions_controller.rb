@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
   end
 
   def new
@@ -12,9 +13,11 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(title: params[:title], body: params[:body], author: User.find(1))
+    @user = User.find(session[:id])
+    @question = Question.new(params.require(:question).permit(:title, :body))
+    @question.author = @user
     if @question.save
-      redirect_to @question
+      redirect_to "/questions/#{@question.id}"
     else
       render 'new'
     end
